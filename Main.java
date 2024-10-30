@@ -15,6 +15,8 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Collections;
 
 public class Main {
 
@@ -130,6 +132,7 @@ public class Main {
 
     // 1.3: Display median of number list
     public static void displayMedian(ArrayList<Integer> numberList) {
+        Collections.sort(numberList);
         if ((numberList.size() % 2) == 0) {
             // If even number of elements
             Integer lowerElementIndex = (numberList.size() / 2) - 1;
@@ -149,7 +152,18 @@ public class Main {
 
     // 1.4: Display mode of number list
     public static void displayMode(ArrayList<Integer> numberList) {
-        System.out.println("Mode of number List");
+        HashMap<Integer, Integer> repeatedTimes = new HashMap<Integer, Integer>();
+        repeatedTimes.clear();
+
+        for (int i = 0; i < numberList.size(); i++) {
+            if (repeatedTimes.get(numberList.get(i)) == null) {
+                repeatedTimes.put(numberList.get(i), 1);
+            } else {
+                repeatedTimes.put(numberList.get(i), repeatedTimes.get(numberList.get(i)) + 1);
+            }
+        }
+
+        // add in finding of highest value;
     }
 
     // 2: Input a new number into number list
