@@ -23,9 +23,6 @@ public class Main {
         ArrayList<Integer> numberList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
-        // display a menu that allows the user to choose
-        // between seeing all the guests, adding a new guest
-        // editing a guest or removing a guest
         while (true) {
             displayMenu();
             int choice = makeAChoice(sc, 1, 6);
@@ -111,8 +108,12 @@ public class Main {
 
     // 1.1: Display number list
     public static void displayList(ArrayList<Integer> numberList, Scanner sc) {
-        for (int i = 0; i < numberList.size(); i++) {
-            System.out.println((i + 1) + ". " + numberList.get(i));
+        if (numberList.size() <= 0) {
+            System.out.println("There is nothing in the number list");
+        } else {
+            for (int i = 0; i < numberList.size(); i++) {
+                System.out.println((i + 1) + ". " + numberList.get(i));
+            }
         }
     }
 
@@ -151,13 +152,26 @@ public class Main {
         numberList.remove(numberIndex - 1);
     }
 
-    // 4: Delete a number from number list
+    // 4: Update a number from number list
     public static void updateNumber(ArrayList<Integer> numberList, Scanner sc) {
-        System.out.println("Update a number: ");
+        displayList(numberList, sc);
+        System.out.print("Choose the numer to edit: ");
+
+        int numberIndex = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter the new number: ");
+        Integer newNumber = sc.nextInt();
+
+        // replace the guest at guestIndex with the new guest name
+        numberList.set(numberIndex - 1, newNumber);
+
     }
 
-    // 5: Delete a number from number list
+    // 5: Clear number list
     public static void clearNumberList(ArrayList<Integer> numberList, Scanner sc) {
-        System.out.println("Clear number list");
+        numberList.clear();
+        System.out.println("Array cleared");
     }
+    // 6: Option 6 is in main
 }
