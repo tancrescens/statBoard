@@ -111,7 +111,9 @@ public class Main {
 
     // 1.1: Display number list
     public static void displayList(ArrayList<Integer> numberList, Scanner sc) {
-        System.out.println("Display number List");
+        for (int i = 0; i < numberList.size(); i++) {
+            System.out.println((i + 1) + ". " + numberList.get(i));
+        }
     }
 
     // 1.2: Display mean of number list
@@ -131,12 +133,22 @@ public class Main {
 
     // 2: Input a new number into number list
     public static void addNumber(ArrayList<Integer> numberList, Scanner sc) {
-        System.out.println("Input the new number: ");
+        System.out.print("Input the new number: ");
+        int input = sc.nextInt();
+        sc.nextLine();
+        numberList.add(input);
+
     }
 
     // 3: Delete a number from number list
     public static void deleteNumber(ArrayList<Integer> numberList, Scanner sc) {
-        System.out.println("Delete a number: ");
+        displayList(numberList, sc);
+        System.out.print("Choose the index of the number to edit: ");
+
+        int numberIndex = sc.nextInt();
+        sc.nextLine();
+
+        numberList.remove(numberIndex - 1);
     }
 
     // 4: Delete a number from number list
