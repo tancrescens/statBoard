@@ -119,12 +119,32 @@ public class Main {
 
     // 1.2: Display mean of number list
     public static void displayMean(ArrayList<Integer> numberList) {
-        System.out.println("Mean of number List");
+        double total = 0;
+        for (int i = 0; i < numberList.size(); i++) {
+            total += numberList.get(i);
+        }
+
+        double mean = total / numberList.size();
+        System.out.println("Mean of number list is: " + mean);
     }
 
     // 1.3: Display median of number list
     public static void displayMedian(ArrayList<Integer> numberList) {
-        System.out.println("Median number List");
+        if ((numberList.size() % 2) == 0) {
+            // If even number of elements
+            Integer lowerElementIndex = (numberList.size() / 2) - 1;
+            Integer upperElementIndex = numberList.size() / 2;
+
+            double total = numberList.get(lowerElementIndex) + numberList.get(upperElementIndex);
+            double median = total / 2;
+
+            System.out.println("Median of number list is: " + median);
+        } else {
+            int medianIndex = (int) Math.floor(numberList.size() / 2);
+            double median = numberList.get(medianIndex);
+
+            System.out.println("Median of number list is: " + median);
+        }
     }
 
     // 1.4: Display mode of number list
